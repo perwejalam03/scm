@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  th:fragment="parent(content, title, script)"
+  xmlns:th="http://www.thymeleaf.org"
+  class="light"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-th-replace="${title}">SCM</title>
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body class="dark:bg-gray-900 dark:text-white">
+    <!-- header content -->
+    <div data-th-replace="~{navbar::navbar}"></div>
+    <!-- main content -->
+    <div class="p-4">
+      <section data-th-replace="${content}"></section>
+    </div>
+    <!-- footer content -->
+     <footer class="p-4">
+        Footer: This is a footer content
+     </footer>
+    <!-- flow bite content -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script data-th-src="@{'/js/script.js'}"></script>
+    <th:block data-th-replace="${script}"></th:block>
+  </body>
+</html>
