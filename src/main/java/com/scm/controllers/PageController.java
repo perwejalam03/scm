@@ -3,8 +3,12 @@ package com.scm.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.scm.forms.UserForm;
+
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -41,8 +45,17 @@ public class PageController {
 		return "login";
 	}
 	@GetMapping("/register")
-	public String getMethodName() {
-		return new String("register");
+	public String register(Model model ) {
+		UserForm userForm = new UserForm();
+		userForm.setName("Alam");
+		model.addAttribute("userForm", userForm);
+		return "register";
+		}
+
+	@RequestMapping(value = "/do-register", method = RequestMethod.POST)
+	public String processRegister(){
+		System.out.println("Processing register");
+		return "redirect:/register";
 	}
 	
 }
